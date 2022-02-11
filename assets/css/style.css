@@ -1,0 +1,27 @@
+body {font-family: 'Roboto', sans-serif;} 
+/* .footer{background-color: rgb(3, 5, 50); color: white;background-size: cover;padding-top:50px;padding-bottom:50px;} */
+/* Footer */
+.footer{background-color: rgb(3, 5, 50); color: white;background-size: cover;padding-top:50px;padding-bottom:50px;}
+.footer-uhuy{padding: 1rem;}
+.footer-title{font-size: 20px;color:white;}
+.social-caption{font-size: 14px;}
+.about-us{
+    list-style-type: none;
+    text-decoration:none;color:white;
+    line-height: 2;font-size: 0.97rem;
+}
+.zoom {transition: .2s;}
+.zoom img {transition: .2s;}
+.zoom:hover img {transform: scale(1.05);}
+@media only screen and (max-width: 600px) {
+    .p-show {
+        display: none;
+    }
+    img.p-img-show{
+        display: block!important;
+        width: 2rem;
+    }
+}
+img.p-img-show{
+    display: none;
+}
