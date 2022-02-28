@@ -148,7 +148,10 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="d-grid gap-2">
-                                        <button class="btn btn-primary btn-lg text-white" type="button"><a><i class='fas fa-church'></i> Daftar Ibadah Offline</a></button>
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <a target="_blank" class="btn btn-primary" href="https://forms.gle/8dZ497ieEm3uybpB8">Daftar Ibadah <br>Pukul 07.00 WITA</a>
+                                            <a target="_blank" class="btn btn-info text-white" href="https://forms.gle/WRTZBduhnWFwiaho8">Daftar Ibadah <br>Pukul 10.00 WITA</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -156,15 +159,10 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="d-grid gap-2">
-                                        <button class="btn btn-primary btn-lg text-white" type="button"><a><i class='fas fa-church'></i> Link Tata Ibadah</a></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="d-grid gap-2">
-                                        <button class="btn btn-primary btn-lg text-white" type="button"><a><i class='fas fa-church'></i> Link Warta Jemaat</a></button>
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <a target="_blank" class="btn btn-success" href="https://forms.gle/8dZ497ieEm3uybpB8">Link Tata Ibadah</a>
+                                            <a target="_blank" class="btn btn-secondary text-white" href="http://bit.ly/WartaJemaatKKDN">Link Warta Jemaat</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -174,7 +172,7 @@
                             <h5 class="card-title">Ibadah Keluarga Daring</h5>
                             <p class="card-text">Setiap Rabu <br> Pukul 19.00</p>
                             <div class="d-grid gap-2">
-                                <button class="btn btn-primary btn-lg text-white" type="button"><a target="_blank" style="text-decoration: none; color:white;" href="https://us02web.zoom.us/j/83227041010?pwd=UXNYTDJMRGt2WkY3ZWpVak5YUU9zUT09">Ikuti</a></button>
+                                <a class="btn btn-primary btn-lg text-white" target="_blank" style="text-decoration: none; color:white;" href="https://us02web.zoom.us/j/83227041010?pwd=UXNYTDJMRGt2WkY3ZWpVak5YUU9zUT09">Ikuti</a>
                             </div>
                         </div>
                     </div>
