@@ -2,10 +2,10 @@
 </div>
 </div>
 <br>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-sm-12 justify-content-center mx-auto ">
-            <div class="card text-dark rounded-0" style="background:#F6F7F9 !important">
+            <div class="card text-dark rounded-0 shadow" style="background:#F6F7F9 !important">
                 <div class="card-body rounded-0" style="font-size:1rem;">
                     <h5 class="card-title text-center" style="padding:2rem;">Ibadah Pelkat Daring (Melalui Zoom Meetings)</h5>
                     <div class="row row-cols-2 row-cols-md-6 g-4">

@@ -49,14 +49,76 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'home';
+$route['default_controller'] = 'Frontend';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 /**
  * Backend
  */
-
+$route['admin/login'] = 'Authentication/viewLoginAdmin';
+$route['admin'] = 'Dashboard';
+$route['admin/dashboard'] = 'Dashboard';
+/**
+ * CRUD PRESBITER
+ */
+$route['admin/presbiter'] = 'Presbiter';
+$route['admin/presbiter/add'] = 'Presbiter/addPresbiterForm';
+$route['admin/presbiter/set'] = 'Presbiter/setPresbiter';
+$route['admin/presbiter/edit/(:num)'] = 'Presbiter/editPresbiterForm/$1';
+$route['admin/presbiter/update/(:num)'] = 'Presbiter/updatePresbiter/$1';
+$route['admin/presbiter/delete/(:num)'] = 'Presbiter/delete/$1';
+/**
+ * CRUD PELKAT
+ */
+$route['admin/pelkat'] = 'Pelkat';
+$route['admin/pelkat/add'] = 'Pelkat/addPelkatForm';
+$route['admin/pelkat/set'] = 'Pelkat/setPelkat';
+$route['admin/pelkat/edit/(:num)'] = 'Pelkat/editPelkatForm/$1';
+$route['admin/pelkat/update/(:num)'] = 'Pelkat/updatePelkat/$1';
+$route['admin/pelkat/delete/(:num)'] = 'Pelkat/delete/$1';
+/**
+ * CRUD KOMISI
+ */
+$route['admin/komisi'] = 'Komisi';
+$route['admin/komisi/add'] = 'Komisi/addKomisiForm';
+$route['admin/komisi/set'] = 'Komisi/setKomisi';
+$route['admin/komisi/edit/(:num)'] = 'Komisi/editKomisiForm/$1';
+$route['admin/komisi/update/(:num)'] = 'Komisi/updateKomisi/$1';
+$route['admin/komisi/delete/(:num)'] = 'Komisi/delete/$1';
+/**
+ * CRUD KMJ
+ */
+$route['admin/kmj'] = 'KMJ';
+$route['admin/kmj/add'] = 'KMJ/addKmjForm';
+$route['admin/kmj/set'] = 'KMJ/setKmj';
+$route['admin/kmj/edit/(:num)'] = 'KMJ/editKmjForm/$1';
+$route['admin/kmj/update/(:num)'] = 'KMJ/updateKmj/$1';
+$route['admin/kmj/delete/(:num)'] = 'KMJ/delete/$1';
+/**
+ * CRUD Pages
+ */
+$route['admin/pages'] = 'Pages';
+$route['admin/pages/add'] = 'Pages/addPagesForm';
+$route['admin/pages/set'] = 'Pages/setPages';
+$route['admin/pages/edit/(:num)'] = 'Pages/editPagesForm/$1';
+$route['admin/pages/update/(:num)'] = 'Pages/updatePages/$1';
+$route['admin/pages/delete/(:num)'] = 'Pages/delete/$1';
+/**
+ * SYSTEM SETTINGS
+ * */
+$route['admin/settings'] = 'Settings';
+$route['admin/settings/set'] = 'Settings/set';
+$route['admin/settings/set/(:num)'] = 'Settings/set/$1';
+$route['admin/settings/delete/(:num)'] = 'Settings/delete/$1';
+$route['admin/logs'] = 'Settings/logs';
+$route['admin/logs/clear'] = 'Settings/clearLog';
 /**
  * Frontend
  */
+$route['/'] = 'Frontend';
+$route['presbiter/(:any)'] = 'Frontend/viewPresbiter/$1';
+$route['pelkat/(:any)'] = 'Frontend/viewPelkat/$1';
+$route['komisi/(:any)'] = 'Frontend/viewKomisi/$1';
+$route['kmj'] = 'Frontend/viewKmj';
+$route['pages/(:any)'] = 'Frontend/viewPages/$1';

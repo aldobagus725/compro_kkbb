@@ -2,7 +2,7 @@
 <div class="col-sm-3">
     <div class="row">
         <div class="col">
-            <div class="card rounded-0 text-white bg-success mb-3">
+            <div class="card rounded-0 text-white bg-success mb-3 shadow">
                 <div class="card-body text-center rounded-0">
                     <h4 class="card-title" >QRIS PERSEMBAHAN</h4>
                     <img style="padding: 2rem;width:100%" class="rounded" src="<?=base_url('assets/img/qris_pelayanan.png')?>">
@@ -16,7 +16,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <div class="card text-dark rounded-0 bg-light mb-3">
+            <div class="card text-dark rounded-0 bg-light mb-3 shadow">
                 <div class="card-body rounded-0">
                     <h5 class="card-title text-center">Link Ibadah</h5>
                     <div class="d-grid gap-2">
@@ -31,13 +31,33 @@
     </div>
     <div class="row">
         <div class="col">
-            <div class="card text-dark rounded-0 bg-light mb-3">
+            <div class="card text-dark rounded-0 bg-light mb-3 shadow">
                 <div class="card-body rounded-0">
                     <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action">Sejarah Gereja</a>
-                        <a href="#" class="list-group-item list-group-item-action">Histori KMJ</a>
+                        <a href="<?=base_url('pages/sejarah')?>" class="list-group-item list-group-item-action">Sejarah Gereja</a>
+                        <a href="<?=base_url('kmj')?>" class="list-group-item list-group-item-action">Histori KMJ</a>
                         <a href="#" class="list-group-item list-group-item-action">Renungan</a>
                     <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card rounded-0 shadow">
+                <div class="card-header rounded-0 bg-primary text-white">
+                    <h5>YouTube GPIB Kasih Karunia Badung-Bali</h5>
+                </div>
+                <div class="card-body rounded-0">
+                    <div class="ratio ratio-16x9">
+                    <iframe 
+                        src="https://www.youtube.com/embed/videoseries?list=PLvuzSH6_9oLqS6RGI1UaokAQNtWQIUadv" 
+                        title="Musik" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
                     </div>
                 </div>
             </div>

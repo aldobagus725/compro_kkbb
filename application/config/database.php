@@ -72,17 +72,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $active_group = 'default';
 $query_builder = TRUE;
-
+// Database selector in case things happens
+if (preg_match('/\blocalhost\b/', current_url())) {
+	$database = "compro_kkbb";
+	$hostname = "localhost";
+	$username = "root";
+	$password = "";
+	$status = "development";
+} else if (preg_match('/\bstaging\b/', current_url())) {
+	$database = "u1684059_gpibkkbb_staging";
+	$hostname = "localhost";
+	$username = "u1684059_gpibkkbbprimary";
+	$password = "&&#@GPIBPrimary2022@#&&";
+	$status = "development";
+} else {
+	$database = "u1684059_gpibkkbb";
+	$hostname = "localhost";
+	$username = "u1684059_gpibkkbbprimary";
+	$password = "&&#@GPIBPrimary2022@#&&";
+	$status = "production";
+}
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => '',
-	'password' => '',
-	'database' => '',
+	'hostname' => $hostname,
+	'username' => $username,
+	'password' => $password,
+	'database' => $database,
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
+	'db_debug' => (ENVIRONMENT !== $status),
 	'cache_on' => FALSE,
 	'cachedir' => '',
 	'char_set' => 'utf8',

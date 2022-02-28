@@ -31,40 +31,41 @@
 					<div class="offcanvas-body">
 						<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="<?=base_url();?>">Beranda</a>
+								<a class="nav-link <?=base_url() == current_url()?"active":""?>" aria-current="page" href="<?=base_url();?>">Beranda</a>
 							</li> 
 							<li class="nav-item">
-								<a class="nav-link" target="_blank" href="http://bit.ly/WartaJemaatKKDN">PHMJ</a>
+								<a class="nav-link <?=base_url('pages/phmj') == current_url()?"active":""?>" href="<?=base_url('pages/phmj')?>">PHMJ</a>
 							</li>
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" href="#" id="dropOne" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-									Presbiter Sektor
-								</a>
-								<ul class="dropdown-menu" aria-labelledby="dropOne">
-									<li><a class="dropdown-item" href="#">Anthiokia</a></li>
-									<li><a class="dropdown-item" href="#">Betlehem</a></li>
-									<li><a class="dropdown-item" href="#">Corinthians</a></li>
-									<li><a class="dropdown-item" href="#">Damsyik</a></li>
-									<li><a class="dropdown-item" href="#">Efrata</a></li>
-									<li><a class="dropdown-item" href="#">Filipi</a></li>
-									<li><a class="dropdown-item" href="#">Galilea</a></li>
-									<li><a class="dropdown-item" href="#">Hermon</a></li>
-								</ul>
-							</li>
+							<?php if ($sektor){ ?>
+								<li class="nav-item dropdown">
+									<a class="nav-link dropdown-toggle " href="#" id="dropOne" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+										Presbiter Sektor
+									</a>
+									<ul class="dropdown-menu" aria-labelledby="dropOne">
+								<?php 
+									for ($i=0;$i<count($sektor);$i++){
+								?>
+									<li><a class="dropdown-item" href="<?=base_url('presbiter/'.$sektor[$i])?>"><?=$sektor[$i]?></a></li>
+								<?php
+									}
+								?>
+									</ul>
+								</li>
+							<?php } else {} ?>
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" href="#" id="dropOne" role="button" data-bs-toggle="dropdown" aria-expanded="true">
 									Pelayanan Kategorial
 								</a>
 								<ul class="dropdown-menu" aria-labelledby="dropOne">
-									<li><a class="dropdown-item" href="#">Pelayanan Anak</a></li>
-									<li><a class="dropdown-item" href="#">Persekutuan Teruna</a></li>
-									<li><a class="dropdown-item" href="#">Gerakan Pemuda</a></li>
+									<li><a class="dropdown-item" href="<?=base_url('pelkat/PA')?>">Pelayanan Anak</a></li>
+									<li><a class="dropdown-item" href="<?=base_url('pelkat/PT')?>">Persekutuan Teruna</a></li>
+									<li><a class="dropdown-item" href="<?=base_url('pelkat/GP')?>">Gerakan Pemuda</a></li>
 									<li>
 										<hr class="dropdown-divider">
 									</li>
-									<li><a class="dropdown-item" href="#">Persekutuan Kaum Perempuan</a></li>
-									<li><a class="dropdown-item" href="#">Persekutuan Kaum Bapak</a></li>
-									<li><a class="dropdown-item" href="#">Persekutuan Kaum Lanjut Usia</a></li>
+									<li><a class="dropdown-item" href="<?=base_url('pelkat/PKP')?>">Persekutuan Kaum Perempuan</a></li>
+									<li><a class="dropdown-item" href="<?=base_url('pelkat/PKB')?>">Persekutuan Kaum Bapak</a></li>
+									<li><a class="dropdown-item" href="<?=base_url('pelkat/PKLU')?>">Persekutuan Kaum Lanjut Usia</a></li>
 								</ul>
 							</li>
 							<li class="nav-item dropdown">
@@ -82,12 +83,9 @@
 							<li class="nav-item">
 								<a class="nav-link" target="_blank" href="http://bit.ly/WartaJemaatKKDN">Warta Jemaat</a>
 							</li>
-							<li class="nav-item">
+							<!-- <li class="nav-item">
 								<a class="nav-link" target="_blank" href="http://bit.ly/WartaJemaatKKDN">Kependudukan</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" target="_blank" href="http://bit.ly/WartaJemaatKKDN">Blog</a>
-							</li>
+							</li> -->
 						</ul>
 						<!-- <form class="d-flex">
 							<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -112,6 +110,15 @@
 				</marquee>
 			</div>
 		</div>
+		<!-- Heroes -->
+		<div class="container text-center">
+			<div class="row align-items-center text-center">
+				<div class="col">
+					<img src="<?=base_url('assets/img/welcome_home.png')?>" alt="gpib" width="100%">
+				</div>
+			</div>
+		</div>
+		<br>
 		<div class="container">
 			<div class="row" style="background-color: white;">
 				<div class="col-sm-9">
