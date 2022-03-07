@@ -7,7 +7,7 @@ class Admin_model extends Users_model{
 	public function getAllAdmins(){
 		$this->db->select(
                             '
-                                users_admins.id, users_admins.username, users_admins.email, 
+                                users_admins.id, users_admins.username, users_admins.fullname, users_admins.last_login_at, users_admins.email, 
                                 users_admins.id_role,users_role.role, users_admins.created_at, 
                                 users_admins.updated_at,
                             '
@@ -77,7 +77,7 @@ class Admin_model extends Users_model{
 		$this->db->trans_begin();
 		if (!$this->db->insert('users_admins', array(
 			'id_role' => $post['id_role'],
-            'fullname' => $post['username'],
+            'fullname' => $post['fullname'],
 			'username' => $post['username'],
 			'email' => $post['email'],
 			'password' => $post['password'],
@@ -98,10 +98,9 @@ class Admin_model extends Users_model{
 		$this->db->where('id', $id);
 		if (!$this->db->update('users_admins', array(
 			'id_role' => $post['id_role'],
-            'fullname' => $post['username'],
+            'fullname' => $post['fullname'],
 			'username' => $post['username'],
 			'email' => $post['email'],
-			'password' => $post['password'],
 		))) {
 			log_message('error', print_r($this->db->error(), true));
 		}

@@ -6,7 +6,7 @@ class Pelkat_model extends CI_Model{
 	// Getters for all
 	public function getAllPelkat(){
 		$this->db   
-                    ->select('id, pelkat, title, body,image, created_at, updated_at, logo')
+                    ->select('id, pelkat, title, body,image, slug, created_at, updated_at, logo')
                     ->from('pelkat');
 		$query = $this->db->get();
 		if ($query->num_rows() > 0) {
@@ -38,6 +38,17 @@ class Pelkat_model extends CI_Model{
 			return false;
 		}
 	}
+	// getPelkatBySlug
+	public function getPelkatBySlug($slug){
+		$this->db->select('*')->from('pelkat')->where('slug', $slug);
+		$query = $this->db->get();
+		if ($query->num_rows() > 0) {
+			return $query->result();
+		}
+		else{
+			return false;
+		}
+	}
 	// Setting Pelkat to be created
 	public function setPelkat($post, $id){
 		$this->db->trans_begin();
@@ -59,6 +70,7 @@ class Pelkat_model extends CI_Model{
 				'body' => $post['body'] ,
                 'image' => $post['image'] ,
 				'logo' => $post['logo'] ,
+				'slug' => strtolower(str_replace(" ","_",trim($post['pelkat']))),
 			))) {
 				log_message('error', print_r($this->db->error(), true));
 			}

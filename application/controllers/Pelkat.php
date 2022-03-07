@@ -95,11 +95,11 @@ class Pelkat extends CI_Controller{
 		// Save to db
 		if ($submit_status==true) {
 			$activity = "Admin #" . $id_admin . " menambahkan pelkat " . $this->input->post('pelkat') . "|" . " -> SUCCESS!";
-			$this->Activitylog_model->setLog($id, "Pelkat", $activity);
+			$this->Activitylog_model->setLog($id_admin, "Pelkat", $activity);
 			$this->alert->SetAlert('success', 'Pelkat berhasil ditambahkan', base_url("admin/pelkat"));
 		} else {
 			$activity = "Admin #" . $id_admin . " menambahkan pelkat " . $this->input->post('pelkat') . "|" . " -> FAIL!";
-			$this->Activitylog_model->setLog($id, "Pelkat", $activity);
+			$this->Activitylog_model->setLog($id_admin, "Pelkat", $activity);
 			$this->alert->SetAlert('error', 'Pelkat gagal ditambahkan');
 		}
 	}
@@ -157,11 +157,11 @@ class Pelkat extends CI_Controller{
 		// Save to db
 		if ($submit_status==true) {
 			$activity = "Admin #" . $id_admin . " edit pelkat " . $this->input->post('pelkat') . "|" . " -> SUCCESS!";
-			$this->Activitylog_model->setLog($id, "Pelkat", $activity);
+			$this->Activitylog_model->setLog($id_admin, "Pelkat", $activity);
 			$this->alert->SetAlert('success', 'Pelkat berhasil diedit', base_url("admin/pelkat"));
 		} else {
 			$activity = "Admin #" . $id_admin . " edit pelkat " . $this->input->post('pelkat') . "|" . " -> FAIL!";
-			$this->Activitylog_model->setLog($id, "Pelkat", $activity);
+			$this->Activitylog_model->setLog($id_admin, "Pelkat", $activity);
 			$this->alert->SetAlert('error', 'Pelkat gagal diedit');
 		}
 	}
@@ -177,7 +177,7 @@ class Pelkat extends CI_Controller{
 			'icon' => "error",
 		);
 		$activity = "Admin #" . $id_admin . " delete data Pelkat dengan ID " . $id . ' -> FAILED';
-		$this->Activitylog_model->setLog($id, "Pelkat", $activity);
+		$this->Activitylog_model->setLog($id_admin, "Pelkat", $activity);
 		} else {
 		$callback = array(
 			'status' => 'created',
@@ -187,7 +187,7 @@ class Pelkat extends CI_Controller{
 			'icon' => "success",
 		);
 		$activity = "Admin #" . $id_admin . " delete data Pelkat dengan ID " . $id . ' -> SUCCESS';
-		$this->Activitylog_model->setLog($id, "Pelkat", $activity);
+		$this->Activitylog_model->setLog($id_admin, "Pelkat", $activity);
 		}
 		echo json_encode($callback);
 	}

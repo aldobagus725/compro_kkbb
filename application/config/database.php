@@ -79,6 +79,13 @@ if (preg_match('/\blocalhost\b/', current_url())) {
 	$username = "root";
 	$password = "";
 	$status = "development";
+}
+else if (preg_match('/\b192.168.100.29\b/', current_url())) {
+	$database = "compro_kkbb";
+	$hostname = "localhost";
+	$username = "root";
+	$password = "";
+	$status = "development";
 } else if (preg_match('/\bstaging\b/', current_url())) {
 	$database = "u1684059_gpibkkbb_staging";
 	$hostname = "localhost";

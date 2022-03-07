@@ -38,8 +38,6 @@
 										<th class="text-center">ID</th>
 										<th class="text-center">Username</th>
 										<th class="text-center">Role</th>
-										<th class="text-center">Area</th>
-										<!-- <th class="text-center">Status Aktif</th> -->
 										<th class="text-center">Created At</th>
 										<th class="text-center">Updated At</th>
 										<th class="text-center">Aksi</th>
@@ -51,48 +49,33 @@
 											<tr>
 												<td class="text-center"><?= $row->id; ?></td>
 												<td class="text-center"><?= $row->username; ?></td>
-												<td class="text-center"><?= $row->nama_role; ?></td>
-												<td class="text-center"><?= $row->nama_area; ?></td>
-												<!-- <td class="text-center">
-													<?//= $row->is_active==0?'<span style="font-size:1rem;" class="badge bg-danger">Tidak Aktif</span>':'<span style="font-size:1rem;" class="badge bg-success">Aktif</span>';?>
-												</td> -->
+												<td class="text-center"><?= $row->role; ?></td>
 												<td class="text-center"><?= $row->created_at; ?></td>
 												<td class="text-center"><?= $row->updated_at; ?></td>
 												<td class="text-center">
 													<div class="btn-group" role="group">
 														<a 
-															data-nama_lengkap="<?= $row->nama_lengkap ?>" 
+															data-fullname="<?= $row->fullname ?>" 
 															data-username="<?= $row->username ?>" 
 															data-email="<?= $row->email ?>" 
-															data-no_telp="<?= $row->no_telp ?>" 
-															data-nama_role="<?= $row->nama_role ?>" 
-															data-nama_area="<?= $row->nama_area ?>" 
-															
+															data-role="<?= $row->role ?>" 
 															data-last_login_at="<?= $row->last_login_at ?>"
 															class="btn btn-primary view_data">
-
-															<!-- data-is_active="<?//= $row->is_active ?>"  -->
 															<i class='fas fa-file-alt'></i>
 														</a>
 														<a 
 															data-id="<?= $row->id ?>" 
-															data-nama_lengkap="<?= $row->nama_lengkap ?>" 
-															data-no_telp="<?= $row->no_telp ?>"
+															data-fullname="<?= $row->fullname ?>" 
 															data-username="<?= $row->username ?>" 
 															data-email="<?= $row->email ?>" 
 															data-id_role="<?= $row->id_role ?>" 
-															data-id_area="<?= $row->id_area ?>" 
-
 															class="btn btn-warning edit_data">
-
-															<!-- data-is_active="<?//= $row->is_active ?>"  -->
 															<i class='fas fa-pen'></i>
 														</a>
 														<a 
 															data-id="<?= $row->id ?>" 
 															data-username="<?= $row->username ?>" 
-															data-nama_role="<?= $row->nama_role ?>" 
-															data-nama_area="<?= $row->nama_area ?>" 
+															data-role="<?= $row->role ?>" 
 															class="btn btn-danger delete_data">
 															<i class='fas fa-trash-alt'></i>
 														</a>
@@ -141,7 +124,7 @@
 												<table class="table table-striped table-hover">
 													<tr>
 														<th>Nama Lengkap</th>
-														<td class="nama_lengkap"></td>
+														<td class="fullname"></td>
 													</tr>
 													<tr>
 														<th>Username</th>
@@ -152,25 +135,13 @@
 														<td class="email"></td>
 													</tr>
 													<tr>
-														<th>Nomor Telepon</th>
-														<td class="no_telp"></td>
-													</tr>
-													<tr>
 														<th>Last Login At</th>
 														<td class="last_login_at"></td>
 													</tr>
 													<tr>
 														<th>Role</th>
-														<td class="nama_role"></td>
+														<td class="role"></td>
 													</tr>
-													<tr>
-														<th>Area</th>
-														<td class="nama_area"></td>
-													</tr>
-													<!-- <tr>
-														<th>Status Aktif</th>
-														<td class="is_active"></td>
-													</tr> -->
 												</table>
 											</div>
 										</div>
@@ -203,21 +174,7 @@
 						<div class="col">
 							<div class="form-group">
 								<label>Nama Lengkap</label>
-								<input type="text" class="form-control nama_lengkap_input" name="nama_lengkap_input" id="nama_lengkap_input" placeholder="Nama Lengkap Admin" required>
-							</div>
-						</div>
-						<div class="col">
-							<div class="form-group">
-								<label>Nomor Telepon</label>
-								<input type="text" class="form-control no_telp_input" name="no_telp_input" id="no_telp_input" placeholder="Nomor Telepon Admin" required>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col">
-							<div class="form-group">
-								<label>Username</label>
-								<input type="text" class="form-control" name="username_input" id="username_input" placeholder="Username admin" required>
+								<input type="text" class="form-control fullname_input" name="fullname_input" id="fullname_input" placeholder="Nama Lengkap Admin" required>
 							</div>
 						</div>
 						<div class="col">
@@ -228,6 +185,12 @@
 						</div>
 					</div>
 					<div class="row">
+						<div class="col">
+							<div class="form-group">
+								<label>Username</label>
+								<input type="text" class="form-control" name="username_input" id="username_input" placeholder="Username admin" required>
+							</div>
+						</div>
 						<div class="col">
 							<div class="input-group mb-3">
 								<div class="input-group-prepend">
@@ -252,24 +215,7 @@
 									<?php if (isset($allRoles)) {
 										foreach ($allRoles as $r) { ?>
 											<option value="<?= $r->id; ?>">
-												<?= (strtoupper($r->nama_role));  ?>
-											</option>
-									<?php }
-									} else {
-									}
-									?>
-								</select>
-							</div>
-						</div>
-						<div class="col">
-							<div class="form-group">
-								<label>Area Admin</label>
-								<select name="id_area_input" id="id_area_input" class="form-control id_area_input" required>
-									<option value="">-- Pilih Area --</option>
-									<?php if (isset($allArea)) {
-										foreach ($allArea as $a) { ?>
-											<option value="<?= $a->id; ?>">
-												<?= (strtoupper($a->nama_area));  ?>
+												<?= (strtoupper($r->role));  ?>
 											</option>
 									<?php }
 									} else {
@@ -305,15 +251,16 @@
 						<div class="col">
 							<div class="form-group">
 								<label>Nama Lengkap</label>
-								<input type="text" class="form-control nama_lengkap_edit" name="nama_lengkap_edit" id="nama_lengkap_edit" placeholder="Nama Lengkap Admin" required>
+								<input type="text" class="form-control fullname_edit" name="fullname_edit" id="fullname_edit" placeholder="Nama Lengkap Admin" required>
 							</div>
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<label>Nomor Telepon</label>
-								<input type="text" class="form-control no_telp_edit" name="no_telp_edit" id="no_telp_edit" placeholder="Nomor Telepon Admin" required>
+								<label>Email Admin</label>
+								<input type="email" class="form-control email_edit" name="email_edit" id="email_edit" placeholder="Email admin" required>
 							</div>
 						</div>
+
 					</div>
 					<div class="row">
 						<div class="col">
@@ -324,39 +271,13 @@
 						</div>
 						<div class="col">
 							<div class="form-group">
-								<label>Email Admin</label>
-								<input type="email" class="form-control email_edit" name="email_edit" id="email_edit" placeholder="Email admin" required>
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col">
-							<div class="form-group">
 								<label>Role Admin</label>
 								<select name="id_role_edit" id="id_role_edit" class="form-control id_role_edit" required>
 									<option value="">-- Pilih Role --</option>
 									<?php if (isset($allRoles)) {
 										foreach ($allRoles as $r) { ?>
 											<option value="<?= $r->id; ?>">
-												<?= (strtoupper($r->nama_role));  ?>
-											</option>
-									<?php }
-									} else {
-									}
-									?>
-								</select>
-							</div>
-						</div>
-						<div class="col">
-							<div class="form-group">
-								<label>Area Admin</label>
-								<select name="id_area_edit" id="id_area_edit" class="form-control id_area_edit" required>
-									<option value="">-- Pilih Area --</option>
-									<?php if (isset($allArea)) {
-										foreach ($allArea as $a) { ?>
-											<option value="<?= $a->id; ?>">
-												<?= (strtoupper($a->nama_area));  ?>
+												<?= (strtoupper($r->role));  ?>
 											</option>
 									<?php }
 									} else {
@@ -366,12 +287,6 @@
 							</div>
 						</div>
 					</div>
-					<!-- <div class="form-check">
-						<input class="form-check-input is_active_edit" name="is_active_edit" type="checkbox" id="defaultCheck2 is_active_edit">
-						<label class="form-check-label" for="defaultCheck2">
-							Aktif
-						</label>
-					</div> -->
 				</div>
 				<div class="modal-footer">
 					<input type="submit" class="btn btn-primary" value="Ubah Data">
@@ -404,8 +319,7 @@
 								<input type="hidden" name="id_delete" id="id_delete" name="id_delete" class="id_delete form-control">
 							</div>
 							<p style="font-size:1.7rem;" class="text-center username_delete text-uppercase font-weight-bold"></p>
-							<p style="font-size:1.5rem;" class="text-center nama_role_delete text-uppercase"></p>
-							<p style="font-size:1.3em;" class="text-center nama_area_delete text-uppercase"></p>
+							<p style="font-size:1.5rem;" class="text-center role_delete text-uppercase"></p>
 						</div>
 					</div>
 					<hr>
@@ -468,7 +382,6 @@
 			$('#eyeSlash').show();
 		}
 	}
-
 	function hidesee_pass_edit() {
 		var x = document.getElementById('togglePassword_edit');
 		if (x.type === 'password') {
@@ -481,26 +394,18 @@
 			$('#eyeSlash1').show();
 		}
 	}
-	// Tambah Admin
+	// View Admin
 	$('.view_data').click(function() {
-        const nama_lengkap = $(this).data('nama_lengkap');
+        const fullname = $(this).data('fullname');
 		const username = $(this).data('username');
 		const email = $(this).data('email');
-		const no_telp = $(this).data('no_telp');
-		// const is_active = $(this).data('is_active');
-		const nama_role = $(this).data('nama_role');
-		const nama_area = $(this).data('nama_area');
+		const role = $(this).data('role');
 		const last_login_at = $(this).data('last_login_at');
-		$('.nama_lengkap').text(nama_lengkap);
+		$('.fullname').text(fullname);
 		$('.username').text(username);
 		$('.email').text(email);
-		$('.no_telp').text(no_telp);
-		$('.nama_role').text(nama_role);
-		$('.nama_area').text(nama_area);
+		$('.role').text(role);
 		$('.last_login_at').text(last_login_at);
-        // is_active
-        // if (is_active == 1){$(".is_active").prop('checked', true).text('Aktif');}
-        // else{$(".is_active").prop('checked', false).text('Tidak Aktif');}
 		$('#viewAdmin').modal('show');
 	});
 	// Tambah Admin
@@ -510,30 +415,15 @@
 	// Edit Data
 	$('.edit_data').click(function() {
 		const id = $(this).data('id');
-		const nama_lengkap = $(this).data('nama_lengkap');
-		const no_telp = $(this).data('no_telp');
+		const fullname = $(this).data('fullname');
 		const username = $(this).data('username');
 		const email = $(this).data('email');
-		const id_area = $(this).data('id_area');
 		const id_role = $(this).data('id_role');
-		// var is_active = $(this).data('is_active');
 		$('.id_edit').val(id);
-		$('.nama_lengkap_edit').val(nama_lengkap);
-		$('.no_telp_edit').val(no_telp);
+		$('.fullname_edit').val(fullname);
 		$('.username_edit').val(username);
 		$('.email_edit').val(email);
-		$('.id_area_edit').val(id_area);
 		$('.id_role_edit').val(id_role);
-		// is_active
-        // if (is_active == 1){$(".is_active_edit").prop('checked', true).val(1);}
-        // else{$(".is_active_edit").prop('checked', false).val(0);}
-        // $(".is_active_edit").change(function(){
-        //     if($(this).prop("checked") == true){
-        //         $(".is_active_edit").prop('checked', true).val(1);
-        //     }else{
-        //         $(".is_active_edit").prop('checked', false).val(0);
-        //     }
-        // });
 		$('#editAdmin').modal('show');
 	});
 	// Delete Data
@@ -541,11 +431,11 @@
 		const id = $(this).data('id');
 		const username = $(this).data('username');
 		const nama_area = $(this).data('nama_area');
-		const nama_role = $(this).data('nama_role');
+		const role = $(this).data('role');
 		$('.id_delete').val(id);
 		$('.username_delete').text(username);
 		$('.nama_area_delete').text(nama_area);
-		$('.nama_role_delete').text(nama_role);
+		$('.role_delete').text(role);
 		$('#deleteAdmin').modal('show');
 	});
 	// Change Pass Admin
@@ -557,23 +447,19 @@
 	// Process Tambah Admin
 	$('#submitAddAdmin').on('submit', function(event) {
 		event.preventDefault();
-		const nama_lengkap = $('#nama_lengkap_input').val();
-		const no_telp = $('#no_telp_input').val();
+		const fullname = $('#fullname_input').val();
 		const username = $('#username_input').val();
 		const email = $('#email_input').val();
 		const password = $('#togglePassword_input').val();
-		const id_area = $('#id_area_input').val();
 		const id_role = $('#id_role_input').val();
 		$.ajax({
 			type: 'POST',
 			url: '<?= base_url('admin/admins/add') ?>',
 			data: {
-				nama_lengkap: nama_lengkap,
-				no_telp: no_telp,
+				fullname: fullname,
 				username: username,
 				email: email,
 				password: window.btoa(password),
-				id_area: id_area,
 				id_role: id_role
 			},
 			success: function(data) {
@@ -614,24 +500,18 @@
 	$('#submitEditAdmin').submit(function(event) {
 		event.preventDefault();
         const id = $('#id_edit').val();
-		const nama_lengkap = $('.nama_lengkap_edit').val();
-		const no_telp = $('.no_telp_edit').val();
+		const fullname = $('.fullname_edit').val();
 		const username = $('.username_edit').val();
 		const email = $('.email_edit').val();
-		const id_area = $('.id_area_edit').val();
 		const id_role = $('.id_role_edit').val();
-		// const is_active = $('.is_active_edit').val();
 		$.ajax({
 			type: 'POST',
 			url: '<?= base_url('admin/admins/update/') ?>' + id,
 			data: {
-				nama_lengkap: nama_lengkap,
-				no_telp: no_telp,
+				fullname: fullname,
 				username: username,
 				email: email,
-				id_area: id_area,
 				id_role: id_role,
-				// is_active:is_active,
 			},
 			success: function(data) {
 				const result = JSON.parse(data);

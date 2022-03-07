@@ -46,9 +46,9 @@
                                 <label>Deskripsi</label>
                                 <textarea class="form-control body" name="body" id="body" required></textarea>
                                 <script>
-                                    // Replace the <textarea id="editor1"> with a CKEditor 4
-                                    // instance, using default configuration.
                                     CKEDITOR.replace( 'body' );
+                                    CKEDITOR.config.width = '100%'; 
+                                    CKEDITOR.config.height = 500;
                                 </script>
                             </div>
                             <div class="form-group">

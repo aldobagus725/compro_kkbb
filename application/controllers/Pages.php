@@ -70,17 +70,17 @@ class Pages extends CI_Controller{
             'title' => $this->input->post('title'),
             'image' => $upload,
             'body' => $this->input->post('body'),
-			'slug' => $this->input->post('slug'),
+			'type' => $this->input->post('type'),
 		];
 		$submit_status = $this->Pages_model->setPages($data, $id=null);
 		// Save to db
 		if ($submit_status==true) {
 			$activity = "Admin #" . $id_admin . " menambahkan pages " . $this->input->post('pages') . "|" . " -> SUCCESS!";
-			$this->Activitylog_model->setLog($id, "Pages", $activity);
+			$this->Activitylog_model->setLog($id_admin, "Pages", $activity);
 			$this->alert->SetAlert('success', 'Pages berhasil ditambahkan', base_url("admin/pages"));
 		} else {
 			$activity = "Admin #" . $id_admin . " menambahkan pages " . $this->input->post('pages') . "|" . " -> FAIL!";
-			$this->Activitylog_model->setLog($id, "Pages", $activity);
+			$this->Activitylog_model->setLog($id_admin, "Pages", $activity);
 			$this->alert->SetAlert('error', 'Pages gagal ditambahkan');
 		}
 	}
@@ -113,17 +113,17 @@ class Pages extends CI_Controller{
             'title' => $this->input->post('title'),
             'image' => $upload,
             'body' => $this->input->post('body'),
-			'slug' => $this->input->post('slug'),
+			'type' => $this->input->post('type'),
 		];
 		$submit_status = $this->Pages_model->setPages($data, $id);
 		// Save to db
 		if ($submit_status==true) {
 			$activity = "Admin #" . $id_admin . " edit pages " . $this->input->post('pages') . "|" . " -> SUCCESS!";
-			$this->Activitylog_model->setLog($id, "Pages", $activity);
+			$this->Activitylog_model->setLog($id_admin, "Pages", $activity);
 			$this->alert->SetAlert('success', 'Pages berhasil diedit', base_url("admin/pages"));
 		} else {
 			$activity = "Admin #" . $id_admin . " edit pages " . $this->input->post('pages') . "|" . " -> FAIL!";
-			$this->Activitylog_model->setLog($id, "Pages", $activity);
+			$this->Activitylog_model->setLog($id_admin, "Pages", $activity);
 			$this->alert->SetAlert('error', 'Pages gagal diedit');
 		}
 	}
@@ -139,7 +139,7 @@ class Pages extends CI_Controller{
 			'icon' => "error",
 		);
 		$activity = "Admin #" . $id_admin . " delete data Pages dengan ID " . $id . ' -> FAILED';
-		$this->Activitylog_model->setLog($id, "Pages", $activity);
+		$this->Activitylog_model->setLog($id_admin, "Pages", $activity);
 		} else {
 		$callback = array(
 			'status' => 'created',
@@ -149,7 +149,7 @@ class Pages extends CI_Controller{
 			'icon' => "success",
 		);
 		$activity = "Admin #" . $id_admin . " delete data Pages dengan ID " . $id . ' -> SUCCESS';
-		$this->Activitylog_model->setLog($id, "Pages", $activity);
+		$this->Activitylog_model->setLog($id_admin, "Pages", $activity);
 		}
 		echo json_encode($callback);
 	}

@@ -6,7 +6,7 @@ class Pages_model extends CI_Model{
 	// Getters for all
 	public function getAllPages(){
 		$this->db   
-                    ->select('id, title, body, slug, image, created_at, updated_at')
+                    ->select('id, title, body, type, slug, image, created_at, updated_at')
                     ->from('pages');
 		$query = $this->db->get();
 		if ($query->num_rows() > 0) {
@@ -38,24 +38,47 @@ class Pages_model extends CI_Model{
 			return false;
 		}
 	}
+	// getPagesByType
+	public function getPagesByType($type){
+		$this->db->select('*')->from('pages')->where('type', $type);
+		$query = $this->db->get();
+		if ($query->num_rows() > 0) {
+			return $query->result();
+		}
+		else{
+			return false;
+		}
+	}
+	// getPagesByType
+	public function getBeritaDuka(){
+		$this->db->select('*')->from('pages')->where('type', "berita_duka")->order_by('created_at asc');
+		$query = $this->db->get();
+		if ($query->num_rows() > 0) {
+			return $query->result();
+		}
+		else{
+			return false;
+		}
+	}
 	// Setting Pages to be created
 	public function setPages($post, $id){
 		$this->db->trans_begin();
 		if ($id) {
 			$this->db->where('id', $id);
 			if (!$this->db->update('pages', array(
-				'slug' => $post['slug'] ,
 				'title' => $post['title'] ,
 				'body' => $post['body'] ,
+				'type' => $post['type'] ,
                 'image' => $post['image'] ,
 			))) {
 				log_message('error', print_r($this->db->error(), true));
 			}
 		} else {
 			if (!$this->db->insert('pages', array(
-				'slug' => $post['slug'] ,
+				'slug' => strtolower(str_replace(" ","_",trim($post['title']))) ,
 				'title' => $post['title'] ,
 				'body' => $post['body'] ,
+				'type' => $post['type'] ,
                 'image' => $post['image'] ,
 			))) {
 				log_message('error', print_r($this->db->error(), true));

@@ -60,6 +60,24 @@ $route['admin/login'] = 'Authentication/viewLoginAdmin';
 $route['admin'] = 'Dashboard';
 $route['admin/dashboard'] = 'Dashboard';
 /**
+ * CRUD BANNER
+ */
+$route['admin/banner'] = 'Banner';
+$route['admin/banner/add'] = 'Banner/addBannerForm';
+$route['admin/banner/set'] = 'Banner/setBanner';
+$route['admin/banner/edit/(:num)'] = 'Banner/editBannerForm/$1';
+$route['admin/banner/update/(:num)'] = 'Banner/updateBanner/$1';
+$route['admin/banner/delete/(:num)'] = 'Banner/delete/$1';
+/**
+ * CRUD HEROES
+ */
+$route['admin/heroes'] = 'Heroes';
+$route['admin/heroes/add'] = 'Heroes/addHeroesForm';
+$route['admin/heroes/set'] = 'Heroes/setHeroes';
+$route['admin/heroes/edit/(:num)'] = 'Heroes/editHeroesForm/$1';
+$route['admin/heroes/update/(:num)'] = 'Heroes/updateHeroes/$1';
+$route['admin/heroes/delete/(:num)'] = 'Heroes/delete/$1';
+/**
  * CRUD PRESBITER
  */
 $route['admin/presbiter'] = 'Presbiter';
@@ -104,6 +122,21 @@ $route['admin/pages/set'] = 'Pages/setPages';
 $route['admin/pages/edit/(:num)'] = 'Pages/editPagesForm/$1';
 $route['admin/pages/update/(:num)'] = 'Pages/updatePages/$1';
 $route['admin/pages/delete/(:num)'] = 'Pages/delete/$1';
+/**
+ * CRUD Admin
+ */
+$route['admin/admins'] = 'Admin';
+$route['admin/admins/add'] = 'Admin/set';
+$route['admin/admins/update/(:num)'] = 'Admin/update/$1';
+$route['admin/admins/delete/(:num)'] = 'Admin/delete/$1';
+$route['admin/admins/changepass/(:num)'] = 'Admin/changePassword/$1';
+/**
+ * CRUD UsersRole
+ */
+$route['admin/role'] = 'UsersRole';
+$route['admin/role/add'] = 'UsersRole/set';
+$route['admin/role/add/(:num)'] = 'UsersRole/set/$1';
+$route['admin/role/delete/(:num)'] = 'UsersRole/delete/$1';
 /**
  * SYSTEM SETTINGS
  * */

@@ -47,20 +47,20 @@
                                         <?php foreach($allRole as $row){ ?>
                                             <tr>
                                                 <td class="text-center"><?= $row->id; ?></td>
-                                                <td class="text-center"><?= $row->nama_role; ?></td>
+                                                <td class="text-center"><?= $row->role; ?></td>
                                                 <td class="text-center"><?= $row->created_at; ?></td>
                                                 <td class="text-center"><?= $row->updated_at; ?></td>
                                                 <td class="text-center">
                                                     <div class="btn-group" role="group" aria-label="aksi_role">
                                                         <a 
                                                             data-id_role="<?=$row->id?>" 
-                                                            data-role="<?=$row->nama_role?>" 
+                                                            data-role="<?=$row->role?>" 
                                                             class="btn btn-warning edit_role">
                                                             Edit
                                                         </a>
                                                         <a 
                                                             data-id_role="<?=$row->id?>" 
-                                                            data-role="<?=$row->nama_role?>" 
+                                                            data-role="<?=$row->role?>" 
                                                             class="btn btn-danger delete_role">
                                                             Delete
                                                         </a>
@@ -92,7 +92,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Nama Role</label>
-                        <input type="text" class="form-control nama_role_input " required name="nama_role_input" id="nama_role_input" placeholder="Nama Role...">
+                        <input type="text" class="form-control role_input " required name="role_input" id="role_input" placeholder="Nama Role...">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -118,7 +118,7 @@
                     <input type="hidden" class="id_role_edit" id="id_role_edit">
                     <div class="form-group">
                         <label>Role</label>
-                        <input type="text" class="form-control nama_role_edit" required name="nama_role_edit" id="nama_role_edit" placeholder="nama role...">
+                        <input type="text" class="form-control role_edit" required name="role_edit" id="role_edit" placeholder="nama role...">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -151,7 +151,7 @@
                             <div class="form-group">
                                 <input type="hidden" name="id_role_delete" id="id_role_delete" class="id_role_delete form-control">
                             </div>
-                            <p style="font-size:1.7rem;" class="text-center nama_role_delete text-uppercase font-weight-bold" id="nama_role_delete"></p>
+                            <p style="font-size:1.7rem;" class="text-center role_delete text-uppercase font-weight-bold" id="role_delete"></p>
                         </div>
                     </div>
                     <hr>
@@ -176,7 +176,7 @@
         const id_role = $(this).data('id_role');
         const nama_role = $(this).data('role');
         $('.id_role_edit').val(id_role);
-        $('.nama_role_edit').val(nama_role);
+        $('.role_edit').val(nama_role);
         $('#editRole').modal('show');
     });
     // Delete Role
@@ -184,17 +184,17 @@
         const id_role = $(this).data('id_role');
         const role = $(this).data('role');
         $('.id_role_delete').val(id_role);
-        $('.nama_role_delete').text(role);
+        $('.role_delete').text(role);
         $('#deleteRole').modal('show');
     });
     // Process Tambah Role
     $('#submitAddRole').on('submit', function(event) {
         event.preventDefault();
-        const nama_role = $('#nama_role_input').val();
+        const nama_role = $('#role_input').val();
         $.ajax({
             type: 'POST',
             url: '<?=base_url('admin/role/add')?>',
-            data:{nama_role:nama_role}, 
+            data:{role:nama_role}, 
             success: function (data) {
                 const result = JSON.parse(data);
                 const status = result.status;
@@ -238,11 +238,11 @@
     $('#submitEditRole').submit(function(event) {
         event.preventDefault();
         const id_role = $('.id_role_edit').val();
-        const nama_role = $('.nama_role_edit').val();
+        const nama_role = $('.role_edit').val();
         $.ajax({
             type: 'POST',
             url: '<?=base_url('admin/role/add/')?>' + id_role,
-            data:{nama_role:nama_role},
+            data:{role:nama_role},
             success: function (data) {
                 const result = JSON.parse(data);
                 const status = result.status;
