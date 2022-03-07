@@ -37,7 +37,7 @@ class UsersRole extends CI_Controller{
 					'icon' => "success",
 				);
 				$activity = "Admin #". $id_admin . " membuat role baru - ".$post['role']." -> SUCCESS";
-				$this->Activitylog_model->setLog($id,"UsersRole",$activity);
+				$this->Activitylog_model->setLog($id_admin,"UsersRole",$activity);
 			} else {
 				$callback = array(
 					'status' => 'failed',
@@ -47,7 +47,7 @@ class UsersRole extends CI_Controller{
 					'icon' => "error",
 				);
 				$activity = "Admin #". $id_admin . " membuat role baru - ".$post['role']." -> FAILED";
-				$this->Activitylog_model->setLog($id,"UsersRole",$activity);
+				$this->Activitylog_model->setLog($id_admin,"UsersRole",$activity);
 			}
 		} else {
 			$callback = array(
@@ -58,7 +58,7 @@ class UsersRole extends CI_Controller{
 				'icon' => "error",
 			);
 			$activity = "Admin #". $id_admin . " membuat role baru - ".$post['role']." -> FAILED (EXIST)";
-			$this->Activitylog_model->setLog($id,"UsersRole",$activity);
+			$this->Activitylog_model->setLog($id_admin,"UsersRole",$activity);
 		}
 		echo json_encode($callback);
 	}
@@ -75,7 +75,7 @@ class UsersRole extends CI_Controller{
 				'icon' => "error",
 			);
 			$activity = "Admin #". $id_admin . " delete role - ".$id." -> FAILED";
-			$this->Activitylog_model->setLog($id,"UsersRole",$activity);
+			$this->Activitylog_model->setLog($id_admin,"UsersRole",$activity);
 		} else {
 			$callback = array(
 				'status' => 'created',
@@ -85,7 +85,7 @@ class UsersRole extends CI_Controller{
 				'icon' => "success",
 			);
 			$activity = "Admin #". $id_admin . " delete role - ".$id." -> SUCCESS";
-			$this->Activitylog_model->setLog($id,"UsersRole",$activity);
+			$this->Activitylog_model->setLog($id_admin,"UsersRole",$activity);
 		}
 		echo json_encode($callback);
 	}

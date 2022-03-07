@@ -75,11 +75,11 @@ class Kmj extends CI_Controller{
 		// Save to db
 		if ($submit_status==true) {
 			$activity = "Admin #" . $id_admin . " menambahkan kmj " . $this->input->post('kmj') . "|" . " -> SUCCESS!";
-			$this->Activitylog_model->setLog($id, "Kmj", $activity);
+			$this->Activitylog_model->setLog($id_admin, "Kmj", $activity);
 			$this->alert->SetAlert('success', 'Kmj berhasil ditambahkan', base_url("admin/kmj"));
 		} else {
 			$activity = "Admin #" . $id_admin . " menambahkan kmj " . $this->input->post('kmj') . "|" . " -> FAIL!";
-			$this->Activitylog_model->setLog($id, "Kmj", $activity);
+			$this->Activitylog_model->setLog($id_admin, "Kmj", $activity);
 			$this->alert->SetAlert('error', 'Kmj gagal ditambahkan');
 		}
 	}
@@ -117,11 +117,11 @@ class Kmj extends CI_Controller{
 		// Save to db
 		if ($submit_status==true) {
 			$activity = "Admin #" . $id_admin . " edit kmj " . $this->input->post('kmj') . "|" . " -> SUCCESS!";
-			$this->Activitylog_model->setLog($id, "Kmj", $activity);
+			$this->Activitylog_model->setLog($id_admin, "Kmj", $activity);
 			$this->alert->SetAlert('success', 'Kmj berhasil diedit', base_url("admin/kmj"));
 		} else {
 			$activity = "Admin #" . $id_admin . " edit kmj " . $this->input->post('kmj') . "|" . " -> FAIL!";
-			$this->Activitylog_model->setLog($id, "Kmj", $activity);
+			$this->Activitylog_model->setLog($id_admin, "Kmj", $activity);
 			$this->alert->SetAlert('error', 'Kmj gagal diedit');
 		}
 	}
@@ -137,7 +137,7 @@ class Kmj extends CI_Controller{
 			'icon' => "error",
 		);
 		$activity = "Admin #" . $id_admin . " delete data Kmj dengan ID " . $id . ' -> FAILED';
-		$this->Activitylog_model->setLog($id, "Kmj", $activity);
+		$this->Activitylog_model->setLog($id_admin, "Kmj", $activity);
 		} else {
 		$callback = array(
 			'status' => 'created',
@@ -147,7 +147,7 @@ class Kmj extends CI_Controller{
 			'icon' => "success",
 		);
 		$activity = "Admin #" . $id_admin . " delete data Kmj dengan ID " . $id . ' -> SUCCESS';
-		$this->Activitylog_model->setLog($id, "Kmj", $activity);
+		$this->Activitylog_model->setLog($id_admin, "Kmj", $activity);
 		}
 		echo json_encode($callback);
 	}

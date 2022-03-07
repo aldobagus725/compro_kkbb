@@ -66,7 +66,6 @@ class Pages_model extends CI_Model{
 		if ($id) {
 			$this->db->where('id', $id);
 			if (!$this->db->update('pages', array(
-				'slug' => strtolower(str_replace(" ","_",trim($post['title']))) ,
 				'title' => $post['title'] ,
 				'body' => $post['body'] ,
 				'type' => $post['type'] ,

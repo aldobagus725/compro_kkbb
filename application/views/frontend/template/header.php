@@ -113,32 +113,27 @@
 								</li>
 								<div class="dropdown-divider"></div>
 								<li><a target="_blank" class="dropdown-item text-wrap" href="https://us02web.zoom.us/j/7749958315?pwd=UWRMMWRUWXFmL0tWdTQvRFlVOGZGQT09"><span class="link-text2"><i class="fas fa-angle-right"></i> PERSIAPAN PF</span></a></li>
-								<li><a target="_blank" class="dropdown-item text-wrap" href="https://us02web.zoom.us/j/84070495254?pwd=Zzh5UkluODZLRzdtRWNOeHJuTFpPQT09"><span class="link-text2"><i class="fas fa-angle-right"></i> IBADAH PERSIAPAN & PENGHIBURAN</span></a></li>
+								<li><a target="_blank" class="dropdown-item text-wrap" href="https://us02web.zoom.us/j/84070495254?pwd=Zzh5UkluODZLRzdtRWNOeHJuTFpPQT09"><span class="link-text2"><i class="fas fa-angle-right"></i> IBADAH PELEPASAN, PEMAKAMAN & PENGHIBURAN</span></a></li>
 							</ul>
 						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropOne" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-								<span class="link-text">FORM ADMINISTRASI</span>
-							</a>
-							<ul class="dropdown-menu shadow" style="width:20rem;" aria-labelledby="dropOne">
-								<li><a class="dropdown-item text-wrap" href="#"> <span class="link-text2"><i class='fas fa-file-alt'></i>&nbsp;Daftar Jemaat Baru</span></a></li>
-								<li><a class="dropdown-item text-wrap" href="#"> <span class="link-text2"><i class='fas fa-file-alt'></i>&nbsp;Daftar Baptisan</span></a></li>
-								<li><a class="dropdown-item text-wrap" href="#"> <span class="link-text2"><i class='fas fa-file-alt'></i>&nbsp;Informasi Katekisasi</span></a></li>
-								<li><a class="dropdown-item text-wrap" href="#"> <span class="link-text2"><i class='fas fa-file-alt'></i>&nbsp;Daftar Pelayanan Pemberkatan Perkawinan</span></a></li>
-								<li><a class="dropdown-item text-wrap" href="#"> <span class="link-text2"><i class='fas fa-file-alt'></i>&nbsp;Permohonan Atestasi (Pindah Gereja)</span></a></li>
-							</ul>
-						</li>
+						<?php if (preg_match('/\blocalhost\b/', current_url()) || preg_match('/\bstaging\b/', current_url())) {?>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" id="dropOne" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+									<span class="link-text">FORM ADMINISTRASI</span>
+								</a>
+								<ul class="dropdown-menu shadow" style="width:20rem;" aria-labelledby="dropOne">
+									<li><a class="dropdown-item text-wrap" href="#"> <span class="link-text2"><i class='fas fa-file-alt'></i>&nbsp;Daftar Jemaat Baru</span></a></li>
+									<li><a class="dropdown-item text-wrap" href="#"> <span class="link-text2"><i class='fas fa-file-alt'></i>&nbsp;Daftar Baptisan</span></a></li>
+									<li><a class="dropdown-item text-wrap" href="#"> <span class="link-text2"><i class='fas fa-file-alt'></i>&nbsp;Informasi Katekisasi</span></a></li>
+									<li><a class="dropdown-item text-wrap" href="#"> <span class="link-text2"><i class='fas fa-file-alt'></i>&nbsp;Daftar Pelayanan Pemberkatan Perkawinan</span></a></li>
+									<li><a class="dropdown-item text-wrap" href="#"> <span class="link-text2"><i class='fas fa-file-alt'></i>&nbsp;Permohonan Atestasi (Pindah Gereja)</span></a></li>
+								</ul>
+							</li>
+						<?php } else{ } ?>
 						<li class="nav-item">
 							<a class="nav-link" target="_blank" href="http://bit.ly/WartaJemaatKKDN"><span class="link-text">Warta Jemaat</span></a>
 						</li>
-						<!-- <li class="nav-item">
-							<a class="nav-link" target="_blank" href="http://bit.ly/WartaJemaatKKDN">Kependudukan</a>
-						</li> -->
 					</ul>
-					<!-- <form class="d-flex">
-						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-						<button class="btn btn-outline-success" type="submit">Search</button>
-					</form> -->
 				</div>
 			</div>
 		</nav>

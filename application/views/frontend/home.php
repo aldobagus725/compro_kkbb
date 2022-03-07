@@ -1,11 +1,11 @@
 <?php if($banners){
-        $countBanners = count($banners[0]);
-        $isActive = true;
-    ?>
+    $countBanners = count($banners[0]);
+    $isActive = true;
+?>
     <div class="container-fluid">
         <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
-                <?php for($i=0;$i<$countBanners;$i++){
+                <?php for($i=0;$i<$countBanners-1;$i++){
                     if ($i==0){
                 ?>
                     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="<?=$i?>" class="active" aria-current="true" aria-label="Slide <?=$i?>"></button>
@@ -38,7 +38,6 @@
     </div>
 <br>
 <?php } ?>
-
 <!-- Salam -->
 <div class="container">
     <div class="row">
@@ -239,7 +238,7 @@
                                 <img src="<?=base_url('assets/img/PKB.png')?>" class="card-img-top" alt="pkb">
                                 <div class="card-body text-center">
                                     <h6 class="card-title">Ibadah Pelkat PKB</h6>
-                                    <p class="card-text">Setiap Sabtu <br> Pukul 19.30 WITA</p>
+                                    <p class="card-text">Setiap Sabtu <br> Pukul 19.00 WITA</p>
                                 </div>
                                 <div class="card-footer border-0 text-center"  style="background:#F6F7F9 !important">
                                     <a class="btn btn-primary btn-lg" target="_blank" href="https://us02web.zoom.us/j/81361650746?pwd=UWFyU2toeEN5ejhZRXpmYTNSMitNdz09">Ikuti</a>

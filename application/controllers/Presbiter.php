@@ -76,11 +76,11 @@ class Presbiter extends CI_Controller{
 		// Save to db
 		if ($submit_status==true) {
 			$activity = "Admin #" . $id_admin . " menambahkan presbiter " . $this->input->post('presbiter') . "|" . " -> SUCCESS!";
-			$this->Activitylog_model->setLog($id, "Presbiter", $activity);
+			$this->Activitylog_model->setLog($id_admin, "Presbiter", $activity);
 			$this->alert->SetAlert('success', 'Presbiter berhasil ditambahkan', base_url("admin/presbiter"));
 		} else {
 			$activity = "Admin #" . $id_admin . " menambahkan presbiter " . $this->input->post('presbiter') . "|" . " -> FAIL!";
-			$this->Activitylog_model->setLog($id, "Presbiter", $activity);
+			$this->Activitylog_model->setLog($id_admin, "Presbiter", $activity);
 			$this->alert->SetAlert('error', 'Presbiter gagal ditambahkan');
 		}
 	}
@@ -119,11 +119,11 @@ class Presbiter extends CI_Controller{
 		// Save to db
 		if ($submit_status==true) {
 			$activity = "Admin #" . $id_admin . " edit presbiter " . $this->input->post('presbiter') . "|" . " -> SUCCESS!";
-			$this->Activitylog_model->setLog($id, "Presbiter", $activity);
+			$this->Activitylog_model->setLog($id_admin, "Presbiter", $activity);
 			$this->alert->SetAlert('success', 'Presbiter berhasil diedit', base_url("admin/presbiter"));
 		} else {
 			$activity = "Admin #" . $id_admin . " edit presbiter " . $this->input->post('presbiter') . "|" . " -> FAIL!";
-			$this->Activitylog_model->setLog($id, "Presbiter", $activity);
+			$this->Activitylog_model->setLog($id_admin, "Presbiter", $activity);
 			$this->alert->SetAlert('error', 'Presbiter gagal diedit');
 		}
 	}
@@ -139,7 +139,7 @@ class Presbiter extends CI_Controller{
 			'icon' => "error",
 		);
 		$activity = "Admin #" . $id_admin . " delete data Presbiter dengan ID " . $id . ' -> FAILED';
-		$this->Activitylog_model->setLog($id, "Presbiter", $activity);
+		$this->Activitylog_model->setLog($id_admin, "Presbiter", $activity);
 		} else {
 		$callback = array(
 			'status' => 'created',
@@ -149,7 +149,7 @@ class Presbiter extends CI_Controller{
 			'icon' => "success",
 		);
 		$activity = "Admin #" . $id_admin . " delete data Presbiter dengan ID " . $id . ' -> SUCCESS';
-		$this->Activitylog_model->setLog($id, "Presbiter", $activity);
+		$this->Activitylog_model->setLog($id_admin, "Presbiter", $activity);
 		}
 		echo json_encode($callback);
 	}

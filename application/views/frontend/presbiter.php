@@ -1,6 +1,5 @@
 
 <?php if ($presbiters){
-    // var_dump($presbiter);
     foreach ($presbiters as $d){
 ?>
     <div class="container">
@@ -48,6 +47,4 @@
         </div>
     </div>
 <?php } ?>
-
-
 </div>

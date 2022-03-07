@@ -59,7 +59,6 @@ class Komisi_model extends CI_Model{
 				'title' => $post['title'] ,
 				'body' => $post['body'] ,
                 'image' => $post['image'] ,
-				'slug' => strtolower(str_replace(" ","_",trim($post['komisi']))) ,
 			))) {
 				log_message('error', print_r($this->db->error(), true));
 			}

@@ -50,7 +50,7 @@
                         <h5>Jam Ibadah</h5>
                         <hr>
                         <ul>
-                            <li>Ibadah Minggu : Setiap Minggu pukul 06.00, 10.00 dan 18.00 WITA</li>
+                            <li>Ibadah Minggu : Setiap Minggu pukul 07.00 dan 10.00 WITA</li>
                             <li>Ibadah Rabu : Setiap Rabu pukul 19.00 WITA</li>
                             <li>Ibadah Pelkat : 
                                 <ul>
@@ -218,7 +218,7 @@
                                 <img src="<?=base_url('assets/img/PKB.png')?>" class="card-img-top" alt="pkb">
                                 <div class="card-body text-center">
                                     <h6 class="card-title">Ibadah Pelkat PKB</h6>
-                                    <p class="card-text">Setiap Sabtu <br> Pukul 19.30 WITA</p>
+                                    <p class="card-text">Setiap Sabtu <br> Pukul 19.00 WITA</p>
                                 </div>
                                 <div class="card-footer border-0 text-center" style="background:white;">
                                     <a class="btn btn-primary btn-lg" target="_blank" href="https://us02web.zoom.us/j/81361650746?pwd=UWFyU2toeEN5ejhZRXpmYTNSMitNdz09">Ikuti</a>

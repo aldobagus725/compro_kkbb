@@ -60,7 +60,6 @@ class Pelkat_model extends CI_Model{
 				'body' => $post['body'] ,
                 'image' => $post['image'] ,
 				'logo' => $post['logo'] ,
-				'slug' => strtolower(str_replace(" ","_",trim($post['pelkat']))),
 			))) {
 				log_message('error', print_r($this->db->error(), true));
 			}

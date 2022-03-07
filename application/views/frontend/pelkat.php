@@ -24,10 +24,10 @@
         </div>
         <div class="row align-items-center" style="padding:2rem 1rem;">
             <div class="col-sm-3 text-center">
-                <img src="<?=base_url('resource/pelkat/'.$d->logo)?>" style="width:100%">
+                <img src="<?=base_url('resource/pelkat/'.$d->logo)?>" style="width:70%">
             </div>
             <div class="col-sm-9 text-center">
-                <img src="<?=base_url('resource/pelkat/'.$d->image)?>" style="width:100%">
+                <img src="<?=base_url('resource/pelkat/'.$d->image)?>" style="width:70%">
             </div>
         </div>
         <div class="row" style="padding:2rem 1rem;">

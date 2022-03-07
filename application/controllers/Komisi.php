@@ -76,11 +76,11 @@ class Komisi extends CI_Controller{
 		// Save to db
 		if ($submit_status==true) {
 			$activity = "Admin #" . $id_admin . " menambahkan komisi " . $this->input->post('komisi') . "|" . " -> SUCCESS!";
-			$this->Activitylog_model->setLog($id, "Komisi", $activity);
+			$this->Activitylog_model->setLog($id_admin, "Komisi", $activity);
 			$this->alert->SetAlert('success', 'Komisi berhasil ditambahkan', base_url("admin/komisi"));
 		} else {
 			$activity = "Admin #" . $id_admin . " menambahkan komisi " . $this->input->post('komisi') . "|" . " -> FAIL!";
-			$this->Activitylog_model->setLog($id, "Komisi", $activity);
+			$this->Activitylog_model->setLog($id_admin, "Komisi", $activity);
 			$this->alert->SetAlert('error', 'Komisi gagal ditambahkan');
 		}
 	}
@@ -119,11 +119,11 @@ class Komisi extends CI_Controller{
 		// Save to db
 		if ($submit_status==true) {
 			$activity = "Admin #" . $id_admin . " edit komisi " . $this->input->post('komisi') . "|" . " -> SUCCESS!";
-			$this->Activitylog_model->setLog($id, "Komisi", $activity);
+			$this->Activitylog_model->setLog($id_admin, "Komisi", $activity);
 			$this->alert->SetAlert('success', 'Komisi berhasil diedit', base_url("admin/komisi"));
 		} else {
 			$activity = "Admin #" . $id_admin . " edit komisi " . $this->input->post('komisi') . "|" . " -> FAIL!";
-			$this->Activitylog_model->setLog($id, "Komisi", $activity);
+			$this->Activitylog_model->setLog($id_admin, "Komisi", $activity);
 			$this->alert->SetAlert('error', 'Komisi gagal diedit');
 		}
 	}
@@ -139,7 +139,7 @@ class Komisi extends CI_Controller{
 			'icon' => "error",
 		);
 		$activity = "Admin #" . $id_admin . " delete data Komisi dengan ID " . $id . ' -> FAILED';
-		$this->Activitylog_model->setLog($id, "Komisi", $activity);
+		$this->Activitylog_model->setLog($id_admin, "Komisi", $activity);
 		} else {
 		$callback = array(
 			'status' => 'created',
@@ -149,7 +149,7 @@ class Komisi extends CI_Controller{
 			'icon' => "success",
 		);
 		$activity = "Admin #" . $id_admin . " delete data Komisi dengan ID " . $id . ' -> SUCCESS';
-		$this->Activitylog_model->setLog($id, "Komisi", $activity);
+		$this->Activitylog_model->setLog($id_admin, "Komisi", $activity);
 		}
 		echo json_encode($callback);
 	}
