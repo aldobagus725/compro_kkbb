@@ -4,6 +4,6 @@ deployment:
  
  tasks:
  
- - export DEPLOYPATH=/home/u1684059/public_html/staging/
+ - export DEPLOYPATH=/home/u1684059/public_html/subdomains/staging/
  
  - /bin/cp -R * $DEPLOYPATH
