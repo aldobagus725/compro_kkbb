@@ -22,54 +22,90 @@
                         <p>DASHBOARD </p>
                     </a>
                 </li>
-                <?php
-                $forms = array(
-                    base_url("admin/baptisan"),
-                    base_url("admin/pernikahan"),
-                    base_url("admin/katekisasi"),
-                    base_url('admin/jemaat_baru'),
-                );
+                <?php if (preg_match('/\blocalhost\b/', current_url()) || preg_match('/\bstaging\b/', current_url())) {
+                        $forms = array(
+                            base_url("admin/baptisan"),
+                            base_url("admin/pernikahan"),
+                            base_url("admin/katekisasi"),
+                            base_url('admin/jemaat_baru'),
+                        );
                 ?>
-                <li class="nav-item <?php if (in_array(current_url(), $forms)) echo "menu-open"; ?>">
-                    <a href="#" class="nav-link <?php if (in_array(current_url(), $forms)) echo "active"; ?>">
-                        <i class="nav-icon fas fas fa-file-alt"></i>
-                        <p>FORM DAFTAR<i class="right fas fa-angle-left"></i></p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <!-- <?php if ($_SESSION['admin']->role != 'admin') : ?>
-                        <?php endif; ?> -->
-                        <li class="nav-item">
-                            <a href="<?= base_url('admin/daftar_gereja') ?>" class="nav-link <?= (current_url() == base_url('admin/baptisan')) ? 'active' : '' ?>">
-                                <i class="nav-icon fas fa-clock"></i>
-                                <p>Baptisan</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('admin/baptisan') ?>" class="nav-link <?= (current_url() == base_url('admin/baptisan')) ? 'active' : '' ?>">
-                                <i class="nav-icon fas fa-clock"></i>
-                                <p>Baptisan</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url("admin/pernikahan") ?>" class="nav-link <?= (current_url() == base_url('base_url("admin/pernikahan")')) ? 'active' : '' ?>">
-                                <i class="nav-icon fas fa-tasks"></i>
-                                <p>Pernikahan</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url("admin/katekisasi") ?>" class="nav-link <?= (current_url() == base_url('admin/katekisasi')) ? 'active' : '' ?>">
-                                <i class="nav-icon fas fa-box"></i>
-                                <p>Katekisasi</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url("admin/jemaat_baru") ?>" class="nav-link <?= (current_url() == base_url('admin/jemaat_baru')) ? 'active' : '' ?>">
-                                <i class="nav-icon fas fa-user-plus"></i>
-                                <p>Daftar Jemaat Baru</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                    <li class="nav-item <?php if (in_array(current_url(), $forms)) echo "menu-open"; ?>">
+                        <a href="#" class="nav-link <?php if (in_array(current_url(), $forms)) echo "active"; ?>">
+                            <i class="nav-icon fas fas fa-file-alt"></i>
+                            <p>FORM DAFTAR<i class="right fas fa-angle-left"></i></p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?= base_url('admin/baptisan') ?>" class="nav-link <?= (current_url() == base_url('admin/baptisan')) ? 'active' : '' ?>">
+                                    <i class="nav-icon fas fa-clock"></i>
+                                    <p>Baptisan</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url("admin/pernikahan") ?>" class="nav-link <?= (current_url() == base_url('base_url("admin/pernikahan")')) ? 'active' : '' ?>">
+                                    <i class="nav-icon fas fa-tasks"></i>
+                                    <p>Pernikahan</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url("admin/katekisasi") ?>" class="nav-link <?= (current_url() == base_url('admin/katekisasi')) ? 'active' : '' ?>">
+                                    <i class="nav-icon fas fa-box"></i>
+                                    <p>Katekisasi</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url("admin/jemaat_baru") ?>" class="nav-link <?= (current_url() == base_url('admin/jemaat_baru')) ? 'active' : '' ?>">
+                                    <i class="nav-icon fas fa-user-plus"></i>
+                                    <p>Daftar Jemaat Baru</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                <?php } ?>
+                <?php if (preg_match('/\blocalhost\b/', current_url()) || preg_match('/\bstaging\b/', current_url())) {
+                        $forms = array(
+                            base_url("admin/ibadah_minggu"),
+                            base_url("admin/ibadah_kenaikan"),
+                            base_url("admin/ibadah_paskah"),
+                            base_url('admin/ibadah_natal'),
+                            base_url('admin/ibadah_jumat_agung'),
+                        );
+                ?>
+                    <li class="nav-item <?php if (in_array(current_url(), $forms)) echo "menu-open"; ?>">
+                        <a href="#" class="nav-link <?php if (in_array(current_url(), $forms)) echo "active"; ?>">
+                            <i class="nav-icon fas fa-church"></i>
+                            <p>DAFTAR IBADAH<i class="right fas fa-angle-left"></i></p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?= base_url('admin/ibadah_minggu') ?>" class="nav-link <?= (current_url() == base_url('admin/ibadah_minggu')) ? 'active' : '' ?>">
+                                    <i class="nav-icon fas fa-church"></i>
+                                    <p>Ibadah Minggu</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url("admin/ibadah_kenaikan") ?>" class="nav-link <?= (current_url() == base_url('admin/ibadah_kenaikan')) ? 'active' : '' ?>">
+                                    <i class="nav-icon fas fa-church"></i>
+                                    <p>Ibadah Kenaikan</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url("admin/ibadah_paskah") ?>" class="nav-link <?= (current_url() == base_url('admin/ibadah_paskah')) ? 'active' : '' ?>">
+                                    <i class="nav-icon fas fa-church"></i>
+                                    <p>Ibadah Paskah</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url("admin/ibadah_jumat_agung") ?>" class="nav-link <?= (current_url() == base_url('admin/ibadah_jumat_agung')) ? 'active' : '' ?>">
+                                    <i class="nav-icon fas fa-church"></i>
+                                    <p>Ibadah Jumat Agung</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                <?php } ?>
+                <li class="nav-header">CONTENTS</li>
                 <li class="nav-item">
                     <a href="<?= base_url("admin/presbiter") ?>" class="nav-link <?= (current_url() == base_url('admin/presbiter')) ? 'active' : '' ?>">
                         <i class="nav-icon fas fa-users"></i>
@@ -97,13 +133,14 @@
                 <li class="nav-item">
                     <a href="<?= base_url("admin/pages") ?>" class="nav-link <?= (current_url() == base_url('admin/pages')) ? 'active' : '' ?>">
                         <i class="nav-icon fas fa-file-alt"></i>
-                        <p>PAGES</p>
+                        <p>HALAMAN</p>
                     </a>
                 </li>
+                <li class="nav-header">SETTINGS</li>
                 <li class="nav-item">
-                    <a href="<?= base_url("admin/banner") ?>" class="nav-link <?= (current_url() == base_url('admin/banner')) ? 'active' : '' ?>">
-                        <i class="nav-icon fas fa-images"></i>
-                        <p>HEROES (BANNER UTAMA)</p>
+                    <a href="<?= base_url("admin/heroes") ?>" class="nav-link <?= (current_url() == base_url('admin/heroes')) ? 'active' : '' ?>">
+                        <i class="nav-icon fas fa-chalkboard"></i>
+                        <p>HEROES</p>
                     </a>
                 </li>
                 <li class="nav-item">

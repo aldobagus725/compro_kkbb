@@ -37,7 +37,8 @@
 									<tr>
 										<th class="text-center">ID</th>
                                         <th class="text-center">Halaman</th>
-										<th class="text-center">Judul</th>
+										<th class="text-center">Slug</th>
+										<th class="text-center">Tipe</th>
 										<th class="text-center">Created At</th>
 										<th class="text-center">Updated At</th>
 										<th class="text-center">Aksi</th>
@@ -50,6 +51,7 @@
 												<td class="text-center"><?= $row->id; ?></td>
                                                 <td class="text-center"><?= $row->title; ?></td>
 												<td class="text-center"><?= $row->slug; ?></td>
+												<td class="text-center"><?= $row->type; ?></td>
 												<td class="text-center"><?= $row->created_at; ?></td>
                                                 <td class="text-center"><?= $row->updated_at; ?></td>
 												<td class="text-center">

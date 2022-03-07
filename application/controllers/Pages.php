@@ -70,7 +70,7 @@ class Pages extends CI_Controller{
             'title' => $this->input->post('title'),
             'image' => $upload,
             'body' => $this->input->post('body'),
-			'slug' => $this->input->post('slug'),
+			'type' => $this->input->post('type'),
 		];
 		$submit_status = $this->Pages_model->setPages($data, $id=null);
 		// Save to db
@@ -113,7 +113,7 @@ class Pages extends CI_Controller{
             'title' => $this->input->post('title'),
             'image' => $upload,
             'body' => $this->input->post('body'),
-			'slug' => $this->input->post('slug'),
+			'type' => $this->input->post('type'),
 		];
 		$submit_status = $this->Pages_model->setPages($data, $id);
 		// Save to db

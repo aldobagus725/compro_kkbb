@@ -1,4 +1,15 @@
 <div class="container">
+    <div class="row" style="font-size: 0.8rem;">
+        <div class="col">
+            <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '>';">
+                <ol class="breadcrumb text-uppercase">
+                    <li class="breadcrumb-item"><a href="<?=base_url()?>">Beranda</a></li>
+                    <li class="breadcrumb-item active"><a href="<?=current_url()?>">Kepemimpinan KMJ</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <hr>
     <div class="row">
         <div class="col text-center">
             <h3>Sejarah KMJ GPIB Kasih Karunia Badung Bali</h3>
@@ -7,7 +18,7 @@
 </div>
 <?php if ($kmj){ ?>
     <div class="container">
-        <div class="row row-cols-1 row-cols-md-3 g-4" style="padding:2rem 1rem;">
+        <div class="row row-cols-1 row-cols-md-4 g-4" style="padding:2rem 1rem;">
             <?php foreach ($kmj as $d){ ?>
                 <div class="col">
                     <div class="card h-100">

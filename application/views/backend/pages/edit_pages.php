@@ -41,15 +41,24 @@
                                 <label>Judul Halaman</label>
                                 <input type="text" required class="form-control title" value="<?=$p->title?>" name="title" id="title" placeholder="Judul, e.g. PHMJ">
                             </div>
-                            <div class="form-group">
-                                <label>Slug (link)</label>
-                                <input type="text" required class="form-control slug" value="<?=$p->slug?>" name="slug" id="slug" placeholder="eg. inforkom">
+                            <div class="row">
+                                <div class="col">
+                                    <label>Tipe Halaman</label>
+                                    <select class="form-control" name="type" id="type" required>
+                                        <option value="">== Pilih ==</option>
+                                        <option <?=$p->type=="profile"?"selected":"";?> value="profile">Profile </option>
+                                        <option <?=$p->type=="info"?"selected":"";?> value="info">Informasi</option>
+                                        <option <?=$p->type=="berita_duka"?"selected":"";?> value="berita_duka">Berita Duka</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Konten</label>
                                 <textarea class="form-control body" name="body" id="body" required><?=$p->body?></textarea>
                                 <script>
                                     CKEDITOR.replace( 'body' );
+                                    CKEDITOR.config.width = '100%'; 
+                                    CKEDITOR.config.height = 500;
                                 </script>
                             </div>
                             <div class="form-group">

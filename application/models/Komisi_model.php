@@ -6,7 +6,7 @@ class Komisi_model extends CI_Model{
 	// Getters for all
 	public function getAllKomisi(){
 		$this->db   
-                    ->select('id, komisi, title, body,image, created_at, updated_at')
+                    ->select('id, komisi, title, body,image, slug, created_at, updated_at')
                     ->from('komisi');
 		$query = $this->db->get();
 		if ($query->num_rows() > 0) {
@@ -38,6 +38,17 @@ class Komisi_model extends CI_Model{
 			return false;
 		}
 	}
+	// getKomisiByTitle
+	public function getKomisiBySlug($slug){
+		$this->db->select('*')->from('komisi')->where('slug', $slug);
+		$query = $this->db->get();
+		if ($query->num_rows() > 0) {
+			return $query->result();
+		}
+		else{
+			return false;
+		}
+	}
 	// Setting Komisi to be created
 	public function setKomisi($post, $id){
 		$this->db->trans_begin();
@@ -48,6 +59,7 @@ class Komisi_model extends CI_Model{
 				'title' => $post['title'] ,
 				'body' => $post['body'] ,
                 'image' => $post['image'] ,
+				'slug' => strtolower(str_replace(" ","_",trim($post['komisi']))) ,
 			))) {
 				log_message('error', print_r($this->db->error(), true));
 			}
@@ -57,6 +69,7 @@ class Komisi_model extends CI_Model{
 				'title' => $post['title'] ,
 				'body' => $post['body'] ,
                 'image' => $post['image'] ,
+				'slug' => strtolower(str_replace(" ","_",trim($post['komisi']))) ,
 			))) {
 				log_message('error', print_r($this->db->error(), true));
 			}

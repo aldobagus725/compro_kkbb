@@ -2,13 +2,13 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Banner</h1>
+        <h1>Heroes</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="<?= base_url('admin/dashboard') ?>">Dashboard</a></li>
-          <li class="breadcrumb-item"><a href="<?= base_url('admin/products') ?>">Banner</a></li>
-          <li class="breadcrumb-item active">Add</li>
+          <li class="breadcrumb-item"><a href="<?= base_url('admin/heroes') ?>">Heroes</a></li>
+          <li class="breadcrumb-item active">Edit Heroes</li>
         </ol>
       </div>
     </div>
@@ -20,37 +20,38 @@
       <div class="col-12">
         <div class="card card-primary">
           <div class="card-header">
-            <h3 class="card-title">Tambah Banners</h3>
+            <h3 class="card-title">Edit Heroes</h3>
           </div>
-          <form action="<?= base_url('banner/addbanner') ?>" id="banner_form" method="POST" enctype="multipart/form-data">
+          <form action="<?= base_url('admin/heroes/update/' . $heroes->id) ?>" id="banner_form" method="POST" enctype="multipart/form-data">
             <div class="card-body">
               <div class="form-group">
-                <label>Judul Banner <span style="color: red;">*</span></label>
-                <input type="text" name="judul_banner" id="judul_banner" class="form-control" placeholder="Masukkan Judul Banner" required>
+                <label>Judul Heroes <span style="color: red;">*</span></label>
+                <input type="text" name="title" id="title" value="<?= $heroes->title ?>" class="form-control" placeholder="Masukkan Judul Heroes" required>
               </div>
-              <?php if ($_SESSION['admin']->nama_role == "superadmin") { ?>
-                <div class="form-group">
-                    <label>Settings Untuk Area</label>
-                    <select class="form-control id_area" id="id_area" name="id_area">
-                        <?php foreach ($allArea as $a){ ?>
-                            <option value="<?=$a->id?>"><?=$a->nama_area?></option>
-                        <?php } ?>
-                    </select>
-                </div>
-                <?php } else { ?>
-                  <div class="form-group">
-                    <input type="hidden" name="id_area" id="id_area" value="<?= $_SESSION['admin']->id_area ?>" class="form-control" >
-                  </div>
-                <?php } ?>
-
               <div class="form-group">
-                <label>Gambar Banner <span style="color: red;">*</span></label>
-                <input type="file" name="file_banner" id="file_banner" class="form-control" required> 
+                <label>Gambar Heroes <span style="color: red;">*</span></label>
+                <input type="file" name="image" id="image" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Aktif / Tidak Aktif <span style="color: red;">*</span></label>
+                <select name="is_active" id="is_active" class="form-control">
+                  <option <?=$heroes->is_active == "0"?"selected":"";?> value="0">Tidak Aktif</option>
+                  <option <?=$heroes->is_active == "1"?"selected":"";?> value="1">Aktif</option>
+                </select>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <i>*current image</i>
+                  <br>
+                  <div class="text-center">
+                    <img style="width:40%;" src="<?= base_url('resource/heroes/' . $heroes->image); ?>">
+                  </div>
+                </div>
               </div>
             </div>
             <!-- /.card-body -->
-            <div class="card-footer text-right">
-              <button name="save" class="btn btn-primary">+ TAMBAH BANNER</button>
+            <div class="card-footer">
+              <button name="save" class="btn btn-primary">Submit</button>
             </div>
           </form>
         </div>
@@ -66,17 +67,11 @@
         judul_banner: {
           required: true,
         },
-        file_banner: {
-          required: true,
-        }
       },
       messages: {
         judul_banner: {
           required: "Kode produk harus diisi",
         },
-        file_banner: {
-          required: "Gambar produk harus diisi",
-        }
       },
       errorElement: 'span',
       errorPlacement: function(error, element) {
@@ -90,6 +85,7 @@
         $(element).removeClass('is-invalid');
       }
     });
+
 
     $('button[name="save"]').on("click", function(e) {
       e.preventDefault();

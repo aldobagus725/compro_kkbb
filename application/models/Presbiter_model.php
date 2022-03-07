@@ -6,7 +6,7 @@ class Presbiter_model extends CI_Model{
 	// Getters for all
 	public function getAllPresbiter(){
 		$this->db   
-                    ->select('id, presbiter, title, body,image, created_at, updated_at')
+                    ->select('id, presbiter, title, body,image, slug, created_at, updated_at')
                     ->from('presbiter');
 		$query = $this->db->get();
 		if ($query->num_rows() > 0) {
@@ -38,6 +38,17 @@ class Presbiter_model extends CI_Model{
 			return false;
 		}
 	}
+	// getPresbiterBySlug
+	public function getPresbiterBySlug($slug){
+		$this->db->select('*')->from('presbiter')->where('slug', $slug);
+		$query = $this->db->get();
+		if ($query->num_rows() > 0) {
+			return $query->result();
+		}
+		else{
+			return false;
+		}
+	}
 	// Setting Presbiter to be created
 	public function setPresbiter($post, $id){
 		$this->db->trans_begin();
@@ -48,6 +59,7 @@ class Presbiter_model extends CI_Model{
 				'title' => $post['title'] ,
 				'body' => $post['body'] ,
                 'image' => $post['image'] ,
+				'slug' => strtolower(str_replace(" ","_",trim($post['presbiter']))),
 			))) {
 				log_message('error', print_r($this->db->error(), true));
 			}
@@ -57,6 +69,7 @@ class Presbiter_model extends CI_Model{
 				'title' => $post['title'] ,
 				'body' => $post['body'] ,
                 'image' => $post['image'] ,
+				'slug' => strtolower(str_replace(" ","_",trim($post['presbiter']))),
 			))) {
 				log_message('error', print_r($this->db->error(), true));
 			}

@@ -38,17 +38,24 @@
                                 <label>Judul Halaman</label>
                                 <input type="text" required class="form-control title" name="title" id="title" placeholder="Judul, e.g. PHMJ">
                             </div>
-                            <div class="form-group">
-                                <label>Slug (link)</label>
-                                <input type="text" required class="form-control slug" name="slug" id="slug" placeholder="eg. phmj">
+                            <div class="row">
+                                <div class="col">
+                                    <label>Tipe Halaman</label>
+                                    <select class="form-control" name="type" id="type" required>
+                                        <option value="">== Pilih ==</option>
+                                        <option value="profile">Profile </option>
+                                        <option value="info">Informasi</option>
+                                        <option value="berita_duka">Berita Duka</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Konten</label>
-                                <textarea class="form-control body" name="body" id="body" required></textarea>
+                                <textarea class="form-control body" name="body" id="body" required ></textarea>
                                 <script>
-                                    // Replace the <textarea id="editor1"> with a CKEditor 4
-                                    // instance, using default configuration.
                                     CKEDITOR.replace( 'body' );
+                                    CKEDITOR.config.width = '100%'; 
+                                    CKEDITOR.config.height = 500;
                                 </script>
                             </div>
                             <div class="form-group">

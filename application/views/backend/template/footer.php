@@ -35,6 +35,8 @@
             $('#table_pelkat').DataTable({});
             $('#table_komisi').DataTable({});
             $('#table_pages').DataTable({});
+            $('#table_banner').DataTable({});
+            $('#table_heroes').DataTable({});
             $('#table-logs').DataTable({
                 
             });

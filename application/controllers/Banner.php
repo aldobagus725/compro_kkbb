@@ -5,46 +5,54 @@ class Banner extends CI_Controller{
 		parent::__construct();
 		date_default_timezone_set('Asia/Singapore');
 		$this->load->model('Banner_model');
-		$this->load->model('Usersarea_model');
 		$this->load->model('Activitylog_model');
 		if ($_SESSION['admin'] == null) {redirect("admin/login");}
 	}
 	// Show All Banners
-	public function showAllBanners(){
+	public function index(){
 		$id = $_SESSION['admin']->id;
 		$data = [
-			'banner' => $this->Banner_model->getAllAdminBanners(),
+			'banner' => $this->Banner_model->getAllBanners(),
 		];
 		$activity = "Admin #". $id . " masuk dashboard banner ";
-		$this->Activitylog_model->setLog($id,$activity);
-		$this->template->load('backend/template', 'backend/banner/banner', $data);
+		$this->Activitylog_model->setLog($id,'Banner',$activity);
+		$this->load->view('backend/template/header');
+		$this->load->view('backend/template/sidebar');
+		$this->load->view('backend/banner/banner',$data);
+		$this->load->view('backend/template/footer');
 	}
 	// Form Add Banners
-	public function addBannersForm(){
+	public function addBannerForm(){
 		$data = [
-			'allArea' => $this->Usersarea_model->getAllArea(),
+			'pos' => $this->Banner_model->getAllPos(),
+			'banner' => $this->Banner_model->getAllBanners(),
 		];
-		$this->template->load('backend/template', 'backend/banner/add_banner', $data);
+		$this->load->view('backend/template/header');
+		$this->load->view('backend/template/sidebar');
+		$this->load->view('backend/banner/add_banner',$data);
+		$this->load->view('backend/template/footer');
 	}
 	// Form Add Banners
-	public function editBannersForm($id){
+	public function editBannerForm($id){
 		$data = [
 			'banner' => $this->Banner_model->getOneBanner($id),
-			'allArea' => $this->Usersarea_model->getAllArea(),
 		];
-		$this->template->load('backend/template', 'backend/banner/edit_banner', $data);
+		$this->load->view('backend/template/header');
+		$this->load->view('backend/template/sidebar');
+		$this->load->view('backend/banner/edit_banner',$data);
+		$this->load->view('backend/template/footer');
 	}
-	// Add Banners Process
-	public function addBanner(){
-		$id = $_SESSION['admin']->id;
+	// Set Banner
+	public function setBanner(){
+		$id_admin = $_SESSION['admin']->id;
 		//Upload Image
-		if ($_FILES['file_banner']) {
+		if ($_FILES['image']) {
 			$upload = null;
-			$config['upload_path']  = './resources/images/';
+			$config['upload_path']  = './resource/banner/';
 			$config['allowed_types']  = "jpg|png|gif|jpeg";
 			$this->upload->initialize($config);
 			$this->load->library('upload', $config);
-			if (!$this->upload->do_upload('file_banner')) {
+			if (!$this->upload->do_upload('image')) {
 				$error = array('error' => $this->upload->display_errors());
 				print_r($error);
 				die;
@@ -54,32 +62,34 @@ class Banner extends CI_Controller{
 		}
 		//Set Data
 		$data = [
-			'judul_banner' => $this->input->post('judul_banner'),
-			'file_banner' => $upload,
-			'id_area' => $this->input->post('id_area'),
+			'title' => $this->input->post('title'),
+			'image' => $upload,
+			'position' => $this->input->post('position'),
+			'visibility' => $this->input->post('visibility'),
 		];
 		//Save to db
-		if ($this->Banner_model->insert($table = 'banner', $data)) {
-			$activity = "Admin #". $id . " membuat banner dengan judul ".$this->input->post('judul_banner')." -> SUCCESS";
-			$this->Activitylog_model->setLog($id,$activity);
+		if ($this->Banner_model->setBanner($data,$id=null)) {
+			$activity = "Admin #". $id_admin . " membuat banner dengan judul ".$this->input->post('judul_banner')." -> SUCCESS";
+			$this->Activitylog_model->setLog($id_admin,"Banner",$activity);
 			$this->alert->SetAlert('success', 'Data banner berhasil ditambahkan', base_url("admin/banner"));
 		} else {
-			$activity = "Admin #". $id . " membuat banner dengan judul ".$this->input->post('judul_banner')." -> FAILED";
-			$this->Activitylog_model->setLog($id,$activity);
+			$activity = "Admin #". $id_admin . " membuat banner dengan judul ".$this->input->post('judul_banner')." -> FAILED";
+			$this->Activitylog_model->setLog($id_admin,"Banner",$activity);
 			$this->alert->SetAlert('error', 'Data banner gagal ditambahkan');
 		}
   	}
-  	public function editBanner($id){
+	// Update Banner
+  	public function updateBanner($id){
 		$current_data = $this->Banner_model->getOneBanner($id);
 		$id_admin = $_SESSION['admin']->id;
 		//Upload Image
-		if ($_FILES['file_banner']) {
+		if ($_FILES['image']) {
 			$upload = null;
-			$config['upload_path']  = './resources/images/';
+			$config['upload_path']  = './resource/banner/';
 			$config['allowed_types']  = "jpg|png|gif|jpeg";
 			$this->upload->initialize($config);
 			$this->load->library('upload', $config);
-			if (!$this->upload->do_upload('file_banner')) {
+			if (!$this->upload->do_upload('image')) {
 				$upload = $current_data->file_banner;
 			} else {
 				$upload = $this->upload->data('file_name');
@@ -90,25 +100,24 @@ class Banner extends CI_Controller{
 		}
 		//Set Data
 		$data = [
-			'judul_banner' => $this->input->post('judul_banner'),
-			'file_banner' => $upload,
-			'id_area' => $this->input->post('id_area'),
+			'title' => $this->input->post('title'),
+			'image' => $upload,
+			'position' => $this->input->post('position'),
+			'visibility' => $this->input->post('visibility'),
 		];
-		$table = "banner";
 		//Save to db
-		if ($this->Banner_model->update($table, ['id' => $id], $data)) {
+		if ($this->Banner_model->setBanner($data,$id)) {
 			$activity = "Admin #". $id_admin . " mengubah banner dengan judul ".$this->input->post('judul_banner')." -> SUCCESS";
-			$this->Activitylog_model->setLog($id_admin,$activity);
+			$this->Activitylog_model->setLog($id_admin,"Banner",$activity);
 			$this->alert->SetAlert('success', 'Data banner berhasil ditambahkan', base_url("admin/banner"));
 		} else {
 			$activity = "Admin #". $id_admin . " mengubah banner dengan judul ".$this->input->post('judul_banner')." -> FAILED";
-			$this->Activitylog_model->setLog($id_admin,$activity);
+			$this->Activitylog_model->setLog($id_admin,"Banner",$activity);
 			$this->alert->SetAlert('error', 'Data banner gagal ditambahkan');
 		}
 	}
-
 	// deleteBanner
-	public function deleteBanner($id){
+	public function delete($id){
 		$id_admin = $_SESSION['admin']->id;
 		$current_data = $this->Banner_model->getOneBanner($id);
 		if($this->Banner_model->deleteBanner($id)){
@@ -120,7 +129,7 @@ class Banner extends CI_Controller{
                 'icon' => "error",
             );
 			$activity = "Admin #". $id_admin . " menghapus banner ".$current_data->judul_banner." -> FAIL!";
-			$this->Activitylog_model->setLog($id_admin,$activity);
+			$this->Activitylog_model->setLog($id_admin,"Banner",$activity);
         }
         else{
             $callback = array(
@@ -131,8 +140,12 @@ class Banner extends CI_Controller{
                 'icon' => "success",
             );
 			$activity = "Admin #". $id_admin . " menghapus banner ".$current_data->judul_banner." -> SUCCESS!";
-			$this->Activitylog_model->setLog($id_admin,$activity);
+			$this->Activitylog_model->setLog($id_admin,"Banner",$activity);
         }
         echo json_encode($callback); 
 	}
+
+	// public function getAllPosition(){
+	// 	return $this->Banner_model->getAllPos();
+	// }
 }
